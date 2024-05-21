@@ -44,6 +44,7 @@ interface IUser {
 export function TableUsers(data: Array<IUser>) {
 
   const [users, setUsers] = useState<[IUser]>(data?.data);
+  const [search, setSearch] = useState<string>('')
   const [userEdit, setUserEdit] = useState();
   const token = localStorage.getItem('user');
   const [open, setOpen] = useState(false);
@@ -76,56 +77,98 @@ export function TableUsers(data: Array<IUser>) {
   }, [data])
 
   return (
-    <TableContainer component={Paper} >
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}
-      >
-        <Styled.ContainerView>
-          <ModalUpdateUser value={userEdit} />
-        </Styled.ContainerView>
-      </Modal>
-      <Table style={{ backgroundColor: '#f5f6fa' }} sx={{ minWidth: 950 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell style={{ fontWeight: 'bold' }}>Nome</TableCell>
-            <TableCell style={{ fontWeight: 'bold' }} align="right">CPF</TableCell>
-            <TableCell style={{ fontWeight: 'bold' }} align="right">Peso&nbsp;(g)</TableCell>
-            <TableCell style={{ fontWeight: 'bold' }} align="right">Idade&nbsp;(g)</TableCell>
-            <TableCell style={{ fontWeight: 'bold' }} align="right">Nascimento&nbsp;(g)</TableCell>
-            <TableCell style={{ fontWeight: 'bold' }} align="right">Deletar&nbsp;(g)</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {users.map((item) => (
-            <TableRow
-              key={item.id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell
-                onClick={() => handleEditItem(item)}
-                component="th" scope="row">
-                {item.nome}
-              </TableCell>
-              <TableCell onClick={() => handleEditItem(item)} align="right">{item.cpf}</TableCell>
-              <TableCell onClick={() => handleEditItem(item)} align="right">{item.peso}</TableCell>
-              <TableCell onClick={() => handleEditItem(item)} align="right">{item.idade}</TableCell>
-              <TableCell onClick={() => handleEditItem(item)} align="right">{item.data_nasc}</TableCell>
-              <TableCell
-                onClick={() => { if (window.confirm('Esta certo de deletar usuario?')) handleRemoveItem(item.id) }}
-                align="center"><DeleteIcon sx={{ color: '#e84118' }} style={{ cursor: 'pointer' }} />
-              </TableCell>
+    <>
+      <Styled.InputSearch placeholder='Pesquisar por nome' type="text" onChange={(e) => setSearch(e.target.value)} />
+      <TableContainer component={Paper} >
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
+          <Styled.ContainerView>
+            <ModalUpdateUser value={userEdit} />
+          </Styled.ContainerView>
+        </Modal>
+        <Table style={{ backgroundColor: '#f5f6fa' }} sx={{ minWidth: 950 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell style={{ fontWeight: 'bold' }}>Nome</TableCell>
+              <TableCell style={{ fontWeight: 'bold' }} align="right">CPF</TableCell>
+              <TableCell style={{ fontWeight: 'bold' }} align="right">Peso</TableCell>
+              <TableCell style={{ fontWeight: 'bold' }} align="right">Idade</TableCell>
+              <TableCell style={{ fontWeight: 'bold' }} align="right">Nascimento</TableCell>
+              <TableCell style={{ fontWeight: 'bold' }} align="center">Deletar</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {search === '' && (
+              <>
+                {users.map((item) => (
+                  <TableRow
+                    hover={true}
+                    key={item.id}
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  >
+                    <TableCell
+                      onClick={() => handleEditItem(item)}
+                      component="th" scope="row">
+                      {item.nome}
+                    </TableCell>
+                    <TableCell onClick={() => handleEditItem(item)} align="right">{item.cpf}</TableCell>
+                    <TableCell onClick={() => handleEditItem(item)} align="right">{item.peso}</TableCell>
+                    <TableCell onClick={() => handleEditItem(item)} align="right">{item.idade}</TableCell>
+                    <TableCell onClick={() => handleEditItem(item)} align="right">{item.data_nasc}</TableCell>
+                    <TableCell
+                      onClick={() => { if (window.confirm('Esta certo de deletar usuario?')) handleRemoveItem(item.id) }}
+                      align="center"><DeleteIcon sx={{ color: '#e84118' }} style={{ cursor: 'pointer' }} />
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </>
+            )}
+            {search !== '' && (
+              <>
+                {users.map((item) => (
+                  <>
+                    {
+                      item.nome.toLowerCase().includes(search.toLowerCase()) && (
+                        <>
+                          <TableRow
+                            hover={true}
+                            key={item.id}
+                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                          >
+                            <TableCell
+                              onClick={() => handleEditItem(item)}
+                              component="th" scope="row">
+                              {item.nome}
+                            </TableCell>
+                            <TableCell onClick={() => handleEditItem(item)} align="right">{item.cpf}</TableCell>
+                            <TableCell onClick={() => handleEditItem(item)} align="right">{item.peso}</TableCell>
+                            <TableCell onClick={() => handleEditItem(item)} align="right">{item.idade}</TableCell>
+                            <TableCell onClick={() => handleEditItem(item)} align="right">{item.data_nasc}</TableCell>
+                            <TableCell
+                              onClick={() => { if (window.confirm('Esta certo de deletar usuario?')) handleRemoveItem(item.id) }}
+                              align="center"><DeleteIcon sx={{ color: '#e84118' }} style={{ cursor: 'pointer' }} />
+                            </TableCell>
+                          </TableRow>
+                        </>
+                      )
+                    }
+                  </>
+                ))}
+              </>
+            )}
+
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </>
   )
 }

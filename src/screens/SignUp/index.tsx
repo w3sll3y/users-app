@@ -18,7 +18,7 @@ export const SignUp = () => {
         navigate("/login");
       }
     } catch (err) {
-      console.log(err);
+      console.log('23132', err);
     }
   }
 

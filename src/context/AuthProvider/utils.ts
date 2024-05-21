@@ -29,7 +29,7 @@ export async function LoginRequest(email: string, password: string) {
     return response.data;
 
   } catch (err) {
-    return null;
+    return window.alert('Email ou senha invalidos');
   }
 }
 
@@ -46,7 +46,19 @@ export async function SignUpRequest(name: string, email: string, password: strin
     return response.data;
 
   } catch (err) {
-    return null;
+    console.log('err', err)
+    if (err?.response?.status === 500) {
+      return window.alert('E-mail ja cadastrado')
+    }
+    window.alert(
+      `Senha deve conter 
+      minimo 4 caracteres 
+      maximo 20 caracteres 
+      minimo 1 letra caractere especial
+      minimo 1 letra minuscula
+      minimo 1 letra maiuscula`
+    )
+    return err
   }
 }
 

@@ -13,6 +13,8 @@ export const Container = styled.section`
 
 export const ContainerList = styled.section`
   margin: 15rem 0;
+  display: flex;
+  flex-direction: column;
   position: relative;
 `;
 
@@ -62,6 +64,7 @@ export const ContainerModalUser = styled.div`
 export const ButtonAdd = styled.button`
   margin-bottom: 1rem;
   background-color: #4cd137;
+  width: 11rem;
   &:hover {
     background-color: #44bd32;
     border-color:#44bd32;
