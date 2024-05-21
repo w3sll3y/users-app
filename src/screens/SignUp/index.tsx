@@ -63,7 +63,7 @@ export const SignUp = () => {
               onClick={handleGoLogin}
               outline
             >
-              Logar
+              Voltar para login
             </Styled.ButtonSend>
           </Styled.ButtonsContainer>
         </Styled.FormLogin>
