@@ -135,9 +135,23 @@ export function ModalUpdateUser(value: IUser) {
     setTelefone_fixo(celularInput);
   };
 
+  useEffect(() => {
+    if (value?.value?.data_nasc) {
+      const partesData = value?.value?.data_nasc.split('/');
+      if (partesData.length === 3) {
+        const ano = partesData[2];
+        const mes = partesData[1].padStart(2, '0');
+        const dia = partesData[0].padStart(2, '0');
+        const dataFormatada = `${ano}-${mes}-${dia}`;
+        setData_nasc(dataFormatada);
+      }
+    }
+  }, [value?.value?.data_nasc]);
+
   return (
     <Styled.Container>
       <Styled.Title>Edite Usuario</Styled.Title>
+      {console.log('adsdadsda', data_nasc)}
       <Styled.FormInput onSubmit={handleSubmit}>
         <Styled.ContainerInput>
           <Styled.LabelContainer>
@@ -153,11 +167,11 @@ export function ModalUpdateUser(value: IUser) {
         <Styled.ContainerInput>
           <Styled.LabelContainer>
             <Styled.LabelInput>cpf*</Styled.LabelInput>
-            <Styled.InputType required placeholder='012.345.678-90' type='text' defaultValue={cpf} value={cpf} onChange={handleCpfChange} maxLength={14} />
+            <Styled.InputType required placeholder='012.345.678-90' type='text' defaultValue={cpf} value={cpf} onChange={handleCpfChange} minLength={14} maxLength={14} />
           </Styled.LabelContainer>
           <Styled.LabelContainer>
             <Styled.LabelInput>rg*</Styled.LabelInput>
-            <Styled.InputType required placeholder='01.234.567-8' type='text' defaultValue={rg} value={rg} onChange={handleRgChange} maxLength={12} />
+            <Styled.InputType required placeholder='01.234.567-8' type='text' defaultValue={rg} value={rg} onChange={handleRgChange} minLength={12} maxLength={12} />
           </Styled.LabelContainer>
         </Styled.ContainerInput>
 
@@ -203,7 +217,7 @@ export function ModalUpdateUser(value: IUser) {
           </Styled.LabelContainer>
           <Styled.LabelContainer>
             <Styled.LabelInput>cep*</Styled.LabelInput>
-            <Styled.InputType required placeholder='01.234-56' type='text' defaultValue={cep} value={cep} onChange={handleCepChange} maxLength={9} />
+            <Styled.InputType required placeholder='01.234-56' type='text' defaultValue={cep} value={cep} onChange={handleCepChange} minLength={9} maxLength={9} />
           </Styled.LabelContainer>
         </Styled.ContainerInput>
 
@@ -236,14 +250,14 @@ export function ModalUpdateUser(value: IUser) {
           </Styled.LabelContainer>
           <Styled.LabelContainer>
             <Styled.LabelInput>tel fixo*</Styled.LabelInput>
-            <Styled.InputType required placeholder='11 4002-8922' type='text' defaultValue={telefone_fixo} value={telefone_fixo} onChange={handleTelChange} maxLength={15} />
+            <Styled.InputType required placeholder='11 4002-8922' type='text' defaultValue={telefone_fixo} value={telefone_fixo} onChange={handleTelChange} minLength={15} maxLength={15} />
           </Styled.LabelContainer>
         </Styled.ContainerInput>
 
         <Styled.ContainerInput>
           <Styled.LabelContainer>
             <Styled.LabelInput>celular*</Styled.LabelInput>
-            <Styled.InputType required placeholder='11 4002-8922' type='text' defaultValue={celular} value={celular} onChange={handleCelularChange} maxLength={15} />
+            <Styled.InputType required placeholder='11 4002-8922' type='text' defaultValue={celular} value={celular} onChange={handleCelularChange} minLength={15} maxLength={15} />
           </Styled.LabelContainer>
           <Styled.LabelContainer>
             <Styled.LabelInput>altura*</Styled.LabelInput>

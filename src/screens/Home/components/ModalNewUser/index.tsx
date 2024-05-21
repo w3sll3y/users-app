@@ -126,11 +126,11 @@ export function ModalNewUser() {
         <Styled.ContainerInput>
           <Styled.LabelContainer>
             <Styled.LabelInput>cpf*</Styled.LabelInput>
-            <Styled.InputType required placeholder='012.345.678-90' type='text' value={cpf} onChange={handleCpfChange} maxLength={14} />
+            <Styled.InputType required placeholder='012.345.678-90' type='text' value={cpf} onChange={handleCpfChange} minLength={14} maxLength={14} />
           </Styled.LabelContainer>
           <Styled.LabelContainer>
             <Styled.LabelInput>rg*</Styled.LabelInput>
-            <Styled.InputType required placeholder='01.234.567-8' type='text' value={rg} onChange={handleRgChange} maxLength={12} />
+            <Styled.InputType required placeholder='01.234.567-8' type='text' value={rg} onChange={handleRgChange} minLength={12} maxLength={12} />
           </Styled.LabelContainer>
         </Styled.ContainerInput>
 
@@ -176,7 +176,7 @@ export function ModalNewUser() {
           </Styled.LabelContainer>
           <Styled.LabelContainer>
             <Styled.LabelInput>cep*</Styled.LabelInput>
-            <Styled.InputType required placeholder='01234-56' type='text' value={cep} onChange={handleCepChange} maxLength={9} />
+            <Styled.InputType required placeholder='01234-56' type='text' value={cep} onChange={handleCepChange} minLength={9} maxLength={9} />
           </Styled.LabelContainer>
         </Styled.ContainerInput>
 
@@ -209,14 +209,14 @@ export function ModalNewUser() {
           </Styled.LabelContainer>
           <Styled.LabelContainer>
             <Styled.LabelInput>tel fixo*</Styled.LabelInput>
-            <Styled.InputType required placeholder='11 4002-8922' type='text' value={telefone_fixo} onChange={handleTelChange} maxLength={15} />
+            <Styled.InputType required placeholder='11 4002-8922' type='text' value={telefone_fixo} onChange={handleTelChange} minLength={15} maxLength={15} />
           </Styled.LabelContainer>
         </Styled.ContainerInput>
 
         <Styled.ContainerInput>
           <Styled.LabelContainer>
             <Styled.LabelInput>celular*</Styled.LabelInput>
-            <Styled.InputType required placeholder='11 4002-8922' type='text' value={celular} onChange={handleCelularChange} maxLength={15} />
+            <Styled.InputType required placeholder='11 4002-8922' type='text' value={celular} onChange={handleCelularChange} minLength={15} maxLength={15} />
           </Styled.LabelContainer>
           <Styled.LabelContainer>
             <Styled.LabelInput>altura*</Styled.LabelInput>
