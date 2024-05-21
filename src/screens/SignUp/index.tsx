@@ -14,7 +14,6 @@ export const SignUp = () => {
   async function handleSingup() {
     try {
       const response = await SignUpRequest(name, email, password);
-      console.log(response)
       if (response?.id) {
         navigate("/login");
       }

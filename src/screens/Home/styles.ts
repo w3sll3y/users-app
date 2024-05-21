@@ -13,6 +13,7 @@ export const Container = styled.section`
 
 export const ContainerList = styled.section`
   margin: 15rem 0;
+  position: relative;
 `;
 
 export const Name = styled.text`
@@ -27,7 +28,8 @@ export const ImportButton = styled.button`
   background-color: #353b48;
   &:hover {
     background-color: #2f3640;
-    outline: none;
+    border-color:#2f3640;
+
   }
 `;
 
@@ -39,6 +41,29 @@ export const LoggoutButton = styled.button`
   background-color: #e84118;
   &:hover {
     background-color: #c23616;
-    outline: none;
+    border-color:#c23616;
+  }
+`;
+
+export const ContainerView = styled.div`
+  width: 40%;
+  height: 40%;
+  border-radius: 15px;
+`;
+
+export const ContainerModalUser = styled.div`
+  width: 45%;
+  height: 80%;
+  overflow: auto;
+  border-radius: 15px;
+  background-color: white;
+`;
+
+export const ButtonAdd = styled.button`
+  margin-bottom: 1rem;
+  background-color: #4cd137;
+  &:hover {
+    background-color: #44bd32;
+    border-color:#44bd32;
   }
 `;

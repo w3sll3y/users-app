@@ -10,7 +10,6 @@ function App() {
 
   async function getUserData() {
     const token = localStorage.getItem('user');
-    console.log('tokkk', token)
 
     if (token) {
       setUser(true);
