@@ -1,37 +1,44 @@
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthProvider/useAuth";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+import { SignUpRequest } from "../../context/AuthProvider/utils";
 import * as Styled from './styles';
 
-export const Login = () => {
-  const auth = useAuth();
+export const SignUp = () => {
   const navigate = useNavigate();
 
+  const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  async function handleLogin() {
+  async function handleSingup() {
     try {
-      const response = await auth.authenticate(email, password);
-      if (response === undefined) {
-        navigate("/home");
-        window.location.reload();
+      const response = await SignUpRequest(name, email, password);
+      console.log(response)
+      if (response?.id) {
+        navigate("/login");
       }
     } catch (err) {
       console.log(err);
     }
   }
 
-  function handleGoSignUp() {
-    navigate("/signup");
+  function handleGoLogin() {
+    navigate("/login");
   }
 
   return (
     <Styled.Container>
       <Styled.ContainerLoginForm>
-        <Styled.TitleLogin>Login</Styled.TitleLogin>
-        <Styled.FormLogin onSubmit={(e) => { handleLogin(); e.preventDefault(); }}>
+        <Styled.TitleLogin>SignUp</Styled.TitleLogin>
+        <Styled.FormLogin onSubmit={(e) => { handleSingup(); e.preventDefault(); }}>
+          <Styled.InputBox
+            type="text"
+            name="name"
+            placeholder="Nome"
+            required
+            onChange={(e) => setName(e.target.value)}
+          />
           <Styled.InputBox
             type="email"
             name="email"
@@ -50,14 +57,14 @@ export const Login = () => {
             <Styled.ButtonSend
               type="submit"
             >
-              Login
+              Cadastrar-se
             </Styled.ButtonSend>
             <Styled.ButtonSend
               type="submit"
-              onClick={handleGoSignUp}
+              onClick={handleGoLogin}
               outline
             >
-              Cadastrar-se
+              Logar
             </Styled.ButtonSend>
           </Styled.ButtonsContainer>
         </Styled.FormLogin>
