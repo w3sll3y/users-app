@@ -151,7 +151,6 @@ export function ModalUpdateUser(value: IUser) {
   return (
     <Styled.Container>
       <Styled.Title>Edite Usuario</Styled.Title>
-      {console.log('adsdadsda', data_nasc)}
       <Styled.FormInput onSubmit={handleSubmit}>
         <Styled.ContainerInput>
           <Styled.LabelContainer>
