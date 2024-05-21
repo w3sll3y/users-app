@@ -16,6 +16,9 @@ export const ContainerList = styled.section`
   display: flex;
   flex-direction: column;
   position: relative;
+  @media (max-width: 768px) {
+    max-width: 90%;
+  }
 `;
 
 export const Name = styled.text`
@@ -51,6 +54,9 @@ export const ContainerView = styled.div`
   width: 40%;
   height: 40%;
   border-radius: 15px;
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `;
 
 export const ContainerModalUser = styled.div`
@@ -59,6 +65,9 @@ export const ContainerModalUser = styled.div`
   overflow: auto;
   border-radius: 15px;
   background-color: white;
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 export const ButtonAdd = styled.button`

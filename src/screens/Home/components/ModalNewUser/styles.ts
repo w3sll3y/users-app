@@ -55,6 +55,9 @@ export const Title = styled.text`
   color: #000000;
   margin-top: 5rem;
   margin-bottom: 2rem;
+  @media (max-width: 768px) {
+    margin-top: 2rem;
+  }
 `;
 
 
@@ -62,6 +65,9 @@ export const ContainerInput = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const LabelContainer = styled.div`

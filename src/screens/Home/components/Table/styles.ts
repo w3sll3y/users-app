@@ -8,6 +8,10 @@ export const ContainerView = styled.div`
 
   background-color: white;
   overflow: auto;
+
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 export const InputSearch = styled.input`

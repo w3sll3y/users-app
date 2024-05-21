@@ -3,7 +3,6 @@ import * as Styled from './styles';
 import axios from 'axios';
 
 export function ModalNewUser() {
-  const [hasUser, setHasUser] = useState(false);
   const token = localStorage.getItem('user');
 
   const [nome, setNome] = useState('');
