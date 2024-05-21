@@ -99,7 +99,7 @@ export function ModalUpdateUser(value: IUser) {
     window.location.reload();
   }
 
-  const handleCpfChange = (event) => {
+  const handleCpfChange = (event: any) => {
     let cpfInput = event.target.value.replace(/\D/g, '');
     cpfInput = cpfInput.replace(/(\d{3})(\d)/, '$1.$2');
     cpfInput = cpfInput.replace(/(\d{3})(\d)/, '$1.$2');
@@ -107,7 +107,7 @@ export function ModalUpdateUser(value: IUser) {
     setCpf(cpfInput);
   };
 
-  const handleRgChange = (event) => {
+  const handleRgChange = (event: any) => {
     let rgInput = event.target.value.replace(/\D/g, '');
     rgInput = rgInput.replace(/^(\d{2})(\d)/, '$1.$2');
     rgInput = rgInput.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
@@ -115,20 +115,20 @@ export function ModalUpdateUser(value: IUser) {
     setRg(rgInput);
   };
 
-  const handleCepChange = (event) => {
+  const handleCepChange = (event: any) => {
     let cepInput = event.target.value.replace(/\D/g, '');
     cepInput = cepInput.replace(/^(\d{5})(\d)/, '$1-$2');
     setCep(cepInput);
   };
 
-  const handleCelularChange = (event) => {
+  const handleCelularChange = (event: any) => {
     let celularInput = event.target.value.replace(/\D/g, '');
     celularInput = celularInput.replace(/^(\d{2})(\d)/, '($1) $2');
     celularInput = celularInput.replace(/(\d{5})(\d)/, '$1-$2');
     setCelular(celularInput);
   };
 
-  const handleTelChange = (event) => {
+  const handleTelChange = (event: any) => {
     let celularInput = event.target.value.replace(/\D/g, '');
     celularInput = celularInput.replace(/^(\d{2})(\d)/, '($1) $2');
     celularInput = celularInput.replace(/(\d{5})(\d)/, '$1-$2');
